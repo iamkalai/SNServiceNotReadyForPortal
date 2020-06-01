@@ -16,7 +16,7 @@ _This is a simple solution to allow a phased approach when converting the servic
 - This makes catalog still access on portal but everything on the catalog form is hidden and a link is displayed to access the service in normal ServiceNow UI.
 - The message that is displayed when the variable set is added to a service catalog appears as below.
   
-![Menu](https://github.com/iamkalai/SNClientScriptExecuter/blob/master/doc/images/ClientScriptExecuter.png)
+![Menu](/doc/images/NotReady.png)
 
 - The variable set can be added on catalog, record producer or order guide as needed.
 - If the variable set needs to be added to a large number of services, make use of the fix script provided. Updates its encoded query as need and run it.
