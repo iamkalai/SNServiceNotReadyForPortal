@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2020-06-01 18:17:20">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description>This allows people to follow a phased approach when converting the services to work on portal.
+This contains a variable set and related functionality that can be added to catalogs/record producer/order guide etc to control if it is not ready for portal.
+This displays a message on the screen to indicate that the service is not ready for portal.
+Run the fix script after updating the encoded query inside it's script . This adds the variable set to all the catalogs that you want not to be available to users on portal. </description>
+<inserted/>
+<name>Not Ready For Portal - 1.0</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>229248351b0d9c508ed631d7dc4bcb2e</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2020-06-01 18:17:19</sys_created_on>
+<sys_id>50ae86cf1b89d4908ed631d7dc4bcb51</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2020-06-01 18:17:19</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_fix_eda60a431b89d4908ed631d7dc4bcb5b</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_fix"&gt;&lt;sys_script_fix action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;before&gt;false&lt;/before&gt;&lt;description&gt;Update the encoded query in line-4 as per your need and run the fix script.&amp;#13;
+This will add the variable set to catalogs that needs to display the 'portal not ready' message.&lt;/description&gt;&lt;flush_cache&gt;false&lt;/flush_cache&gt;&lt;name&gt;Add Portal Message Variable Set&lt;/name&gt;&lt;record_for_rollback&gt;true&lt;/record_for_rollback&gt;&lt;run_once&gt;true&lt;/run_once&gt;&lt;script&gt;&lt;![CDATA[(function() {
+
+    var getCatalog = new GlideRecord("sc_cat_item");
+    getCatalog.addEncodedQuery("active=true^hide_sp=false^sys_class_name=sc_cat_item"); //Update this
+    getCatalog.query();
+    while (getCatalog.next()) {
+        var addVariableSet = new GlideRecord("io_set_item");
+        addVariableSet.initialize();
+        addVariableSet.sc_cat_item = getCatalog.getValue("sys_id");
+        addVariableSet.variable_set = "86f3c8b51b0d9c508ed631d7dc4bcbcd"; //variable set sys_id
+        addVariableSet.insert();
+    }
+
+})();]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_fix&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2020-06-01 17:49:55&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;false&lt;/sys_customer_update&gt;&lt;sys_id&gt;eda60a431b89d4908ed631d7dc4bcb5b&lt;/sys_id&gt;&lt;sys_mod_count&gt;5&lt;/sys_mod_count&gt;&lt;sys_name&gt;Add Portal Message Variable Set&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_fix_eda60a431b89d4908ed631d7dc4bcb5b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2020-06-01 18:15:12&lt;/sys_updated_on&gt;&lt;unloadable&gt;false&lt;/unloadable&gt;&lt;/sys_script_fix&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1382442855</payload_hash>
+<remote_update_set display_value="Not Ready For Portal - 1.0">50ae86cf1b89d4908ed631d7dc4bcb51</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2020-06-01 18:17:19</sys_created_on>
+<sys_id>14ae86cf1b89d4908ed631d7dc4bcb52</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>172711838ef0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2020-06-01 18:17:19</sys_updated_on>
+<table/>
+<target_name>Add Portal Message Variable Set</target_name>
+<type>Fix Script</type>
+<update_domain>global</update_domain>
+<update_guid>cd2e468f9c89d490d20977f82f33db0a</update_guid>
+<update_guid_history>cd2e468f9c89d490d20977f82f33db0a:-1382442855,4da942c7d889d49098f8ebfd93d40514:313247368,2a890e870789d490be693032761b57d6:-1545421687,f4790e870289d490695e326c65108209:-574845376,c7c80e07ae89d490f22024b359131c93:296491022,f6584283a489d49033999cbed7736740:-574845376</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sp_widget_7d840cf51b0d9c508ed631d7dc4bcb67</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function($scope, $timeout, $window) {
+    /* widget controller */
+    var c = this;
+
+    //Update these as per your current widget configuration
+    if (c.data.className == 'sc_cat_item_guide') { //Order Guides
+        angular.element('div.guide-nav').hide();
+        angular.element('div.wrapper-xs.og-timeline.b-t').hide();
+    } else { // Catalogs and Record producers
+        angular.element('div.panel.panel-default.b.wrapper-md').hide();
+    }
+
+    //Hides all the variables
+    var variables = ($scope.page.g_form.getFieldNames()).toString().split(',');
+    for (var variableName = 0; variableName &lt; variables.length; variableName++) {
+        $scope.page.g_form.setMandatory(variables[variableName], false);
+        $scope.page.g_form.setDisplay(variables[variableName], false);
+    }
+
+    $scope.page.g_form.setDisplay('portal_message', true); //Display message
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css/&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description&gt;This is used to display a message on catalog to indicate that the catalog is not yet accessible on portal.&lt;/description&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;not_ready_for_portal_message_widget&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) { 
+
+ }]]&gt;&lt;/link&gt;&lt;name&gt;Not Ready For Portal Message Widget&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+    data.sysID = $sp.getParameter('sys_id');
+    data.className = $sp.getParameter('id');
+    data.url = (data.className == 'sc_cat_item_guide') ? "/com.glideapp.servicecatalog_cat_item_guide_view.do?sysparm_guide=" + data.sysID : data.url = "/com.glideapp.servicecatalog_cat_item_view.do?sysparm_id=" + data.sysID;
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2020-05-28 11:02:42&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;false&lt;/sys_customer_update&gt;&lt;sys_id&gt;7d840cf51b0d9c508ed631d7dc4bcb67&lt;/sys_id&gt;&lt;sys_mod_count&gt;15&lt;/sys_mod_count&gt;&lt;sys_name&gt;Not Ready For Portal Message Widget&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_7d840cf51b0d9c508ed631d7dc4bcb67&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2020-06-01 17:54:15&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div class="alert alert-warning" role="alert"&gt;
+	&lt;strong&gt; This is not yet available on Service Portal. Please click &lt;a id="u_catalog_link" title="Link" href="{{ data.url }}" target="_blank"&gt;here&lt;/a&gt; to access this instead.&lt;/strong&gt;
+&lt;/div&gt;
+]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+<payload_hash>2037460839</payload_hash>
+<remote_update_set display_value="Not Ready For Portal - 1.0">50ae86cf1b89d4908ed631d7dc4bcb51</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2020-06-01 18:17:19</sys_created_on>
+<sys_id>50ae86cf1b89d4908ed631d7dc4bcb52</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>17271050d010000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2020-06-01 18:17:19</sys_updated_on>
+<table/>
+<target_name>Not Ready For Portal Message Widget</target_name>
+<type>Widget</type>
+<update_domain>global</update_domain>
+<update_guid>9e59ce47ab89d490eca971ceb55c26f3</update_guid>
+<update_guid_history>9e59ce47ab89d490eca971ceb55c26f3:2037460839,90390687c589d490c68330c6476e3e82:-1171947594,32fd998f8045d490b399a531ceb5b2bc:-2129124374,e79dd18f9145d49083da3305d45bbef2:2110828004,f0fbd94b1845d4902fc8da9a5c2c7b4c:219598985,b8eb5d4b5945d49098224d337699d572:414307206,8f4b990b0c45d490aaae727c6db000f0:-1240411719,5d3b550b8945d490c500d3bbd5765314:558019225,e31b150b1c45d4903bf7d41fe4352094:-1731531687,1aca95c73945d4908701889193b6fdae:-1240411719,6c7a95878345d49040c94fcc329f955e:1506348825,41e95547be45d490e5fa46043af0cc90:44707680,4ac9d583ed45d490e723d82a63a308ff:-556211164,e26959075645d4904762b3a2f342f026:-2124837791,fc5995077645d490000d9e9dca2fc2d3:-1976705754,319dc8f5074d9c500fec34f618e02d67:191167892,de6d8835c84d9c50a3430e00625b1a41:-380911852,c84d4435584d9c50e84d99a1890cedc3:1006077606,0c5b4435ed4d9c508e2a99775cef80cc:595914960,65580c7db40d9c50d689c6fc3df65400:-1142588446,26b6c039920d9c50de48c2f3a76cf0ec:-2124837791,418644b9210d9c50d1113ea50905bb19:577774168,26c4c4f5c20d9c50cc6b9faa88fcf864:-1976705754</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_7e4444f51b0d9c508ed631d7dc4bcba3</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="item_option_new"><item_option_new action="INSERT_OR_UPDATE"><active>true</active><attributes/><cat_item/><category/><choice_direction>down</choice_direction><choice_field/><choice_table/><create_roles/><default_html_value/><default_value/><delete_roles/><delivery_plan/><description/><display_title>false</display_title><do_not_select_first>false</do_not_select_first><dynamic_default_value/><dynamic_ref_qual/><example_text/><field/><global>false</global><help_tag>More information</help_tag><help_text/><include_none>false</include_none><instructions/><layout>normal</layout><list_table/><lookup_label/><lookup_price/><lookup_table/><lookup_unique>false</lookup_unique><lookup_value/><macro/><mandatory>false</mandatory><map_to_field>false</map_to_field><mask_use_confirmation>false</mask_use_confirmation><mask_use_encryption>false</mask_use_encryption><name>portal_message</name><order/><price_if_checked>0</price_if_checked><pricing_implications>false</pricing_implications><question_text>Portal Message</question_text><read_roles/><rec_lookup_price/><rec_price_if_checked>0</rec_price_if_checked><record/><record_producer_table/><reference/><reference_qual/><reference_qual_condition/><scale_max>5</scale_max><scale_min>0</scale_min><show_help>false</show_help><show_help_on_load>false</show_help_on_load><sp_widget display_value="Not Ready For Portal Message">7d840cf51b0d9c508ed631d7dc4bcb67</sp_widget><summary_macro/><sys_class_name>item_option_new</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-28 11:02:48</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>7e4444f51b0d9c508ed631d7dc4bcba3</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Portal Message</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Global">global</sys_scope><sys_update_name>item_option_new_7e4444f51b0d9c508ed631d7dc4bcba3</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-28 11:08:52</sys_updated_on><table/><tooltip/><type>14</type><ui_page/><use_dynamic_default>false</use_dynamic_default><use_reference_qualifier>simple</use_reference_qualifier><validate_regex/><variable_name/><variable_set display_value="Not Ready For Portal">86f3c8b51b0d9c508ed631d7dc4bcbcd</variable_set><variable_width/><visibility>1</visibility><visible_bundle>true</visible_bundle><visible_guide>true</visible_guide><visible_standalone>true</visible_standalone><visible_summary>true</visible_summary><write_roles/></item_option_new><sys_translated_text action="delete_multiple" query="documentkey=7e4444f51b0d9c508ed631d7dc4bcba3"/><fx_price action="delete_multiple" query="id=7e4444f51b0d9c508ed631d7dc4bcba3"/><fx_price action="INSERT_OR_UPDATE"><amount>0</amount><currency display_value="USD">USD</currency><field>price_if_checked</field><id>7e4444f51b0d9c508ed631d7dc4bcba3</id><parent/><reference_amount>0</reference_amount><reference_currency display_value="USD">USD</reference_currency><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-28 11:02:48</sys_created_on><sys_id>88d4c0391b0d9c508ed631d7dc4bcb9d</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-28 11:02:48</sys_updated_on><table>item_option_new</table><type>calculated</type></fx_price><fx_price action="INSERT_OR_UPDATE"><amount>0</amount><currency display_value="USD">USD</currency><field>rec_price_if_checked</field><id>7e4444f51b0d9c508ed631d7dc4bcba3</id><parent/><reference_amount>0</reference_amount><reference_currency display_value="USD">USD</reference_currency><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-28 11:02:48</sys_created_on><sys_id>04d4c0391b0d9c508ed631d7dc4bcb9c</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-28 11:02:48</sys_updated_on><table>item_option_new</table><type>calculated</type></fx_price></record_update>]]></payload>
+<payload_hash>-1936703447</payload_hash>
+<remote_update_set display_value="Not Ready For Portal - 1.0">50ae86cf1b89d4908ed631d7dc4bcb51</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2020-06-01 18:17:19</sys_created_on>
+<sys_id>94ae86cf1b89d4908ed631d7dc4bcb51</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1725af879b40000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2020-06-01 18:17:19</sys_updated_on>
+<table/>
+<target_name>Portal Message</target_name>
+<type>Variable</type>
+<update_domain>global</update_domain>
+<update_guid>893688b9040d9c50e5750b04698706db</update_guid>
+<update_guid_history>893688b9040d9c50e5750b04698706db:-1936703447,08d4c039590d9c505e487a270584429f:-1405976949</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_set_86f3c8b51b0d9c508ed631d7dc4bcbcd</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="item_option_new_set"><item_option_new_set action="INSERT_OR_UPDATE"><create_roles/><description>This variable set contains a macro variable that displays a message if the service is not yet ready for portal</description><display_title>false</display_title><internal_name>not_ready_for_portal</internal_name><layout>normal</layout><name/><order>1000</order><read_roles/><set_attributes/><sys_class_name>item_option_new_set</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-28 11:00:19</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>86f3c8b51b0d9c508ed631d7dc4bcbcd</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Not Ready For Portal</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Global">global</sys_scope><sys_update_name>item_option_new_set_86f3c8b51b0d9c508ed631d7dc4bcbcd</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-06-01 18:16:32</sys_updated_on><title>Not Ready For Portal</title><type>one_to_one</type><write_roles/></item_option_new_set></record_update>]]></payload>
+<payload_hash>40914299</payload_hash>
+<remote_update_set display_value="Not Ready For Portal - 1.0">50ae86cf1b89d4908ed631d7dc4bcb51</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2020-06-01 18:17:19</sys_created_on>
+<sys_id>9cae86cf1b89d4908ed631d7dc4bcb51</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>172711972940000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2020-06-01 18:17:19</sys_updated_on>
+<table/>
+<target_name>Not Ready For Portal</target_name>
+<type>Variable Set</type>
+<update_domain>global</update_domain>
+<update_guid>bc7e0acfc589d49075c0f90e651cde69</update_guid>
+<update_guid_history>bc7e0acfc589d49075c0f90e651cde69:40914299,4457d9033345d49044cd7636913ef6d3:773539427,7b34c83554c99c5037cd8090e7faa831:1109517153</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>
